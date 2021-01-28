@@ -1,16 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac To</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link 
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" 
+    rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="normalize.css" />
+    <title>Tic Tac Toe</title>
+  </head>
+
+  <body>
     <header>
-        <div id="div_title">
-            <h1 id="title"> Here to play, Tic Tac To !</h1>
-            <p id="title_p">Call your friends and start playing</p>
-        </div>
+      <div id="div_title">
+        <h1 id="title">Here to play Tic Tac Toe !</h1>
+        <p id="title_p">Call your friends and start playing</p>
+      </div>
     </header>
-</body>
+
+    <div class="player">
+
+      <div id="player1">
+        <h2>First Player</h2>
+        <button class="btn">Cross</button>
+        <button class="btn">Cirlcle</button>
+      </div>
+
+      <div id="player2">
+        <h2>Second Player</h2>
+        <button class="btn">Cross</button>
+        <button class="btn">Cirlcle</button>
+      </div>
+    </div>
+
+    <div class="container" id="main">
+      <div class="carre" id="carre1"></div>
+      <div class="carre" id="carre2"></div>
+      <div class="carre" id="carre3"></div>
+      <div class="carre" id="carre4"></div>
+      <div class="carre" id="carre5"></div>
+      <div class="carre" id="carre6"></div>
+      <div class="carre" id="carre7"></div>
+      <div class="carre" id="carre8"></div>
+      <div class="carre" id="carre9"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
