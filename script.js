@@ -17,6 +17,7 @@ let verticale_center = [0, 0, 0];
 let transversale_right = [0, 0, 0];
 let transversale_left = [0, 0, 0];
 
+<<<<<<< HEAD
 
 
 push1.addEventListener("click", function() {
@@ -35,6 +36,50 @@ push1.addEventListener("click", function() {
     bascule = !bascule
 })
 
+=======
+<<<<<<< HEAD
+let push1 = document.querySelector("#carre1");
+let push2 = document.querySelector("#carre2");
+let push3 = document.querySelector("#carre3");
+let push4 = document.querySelector("#carre4");
+let push5 = document.querySelector("#carre5");
+let push6 = document.querySelector("#carre6");
+let push7 = document.querySelector("#carre7");
+let push8 = document.querySelector("#carre8");
+let push9 = document.querySelector("#carre9");
+let bascule = true;
+let horizontale_haut = [0, 0, 0];
+let horizontale_bas = [0, 0, 0];
+let horizontale_center = [0, 0, 0];
+let verticale_right = [0, 0, 0];
+let verticale_left = [0, 0, 0];
+let verticale_center = [0, 0, 0];
+let transversale_right = [0, 0, 0];
+let transversale_left = [0, 0, 0];
+
+
+
+=======
+
+
+>>>>>>> ajout script js
+push1.addEventListener("click", function() {
+    if (bascule == true){
+        push1.innerHTML = '<i class="fas fa-times"></i>';
+        horizontale_haut[1] = 1;
+        verticale_left[1] = 1;
+        transversale_left[1] = 1;
+    }
+    else{
+        push1.innerHTML = '<i class="far fa-circle"></i>';
+         horizontale_haut[1] = 2;
+         verticale_left[1] = 2;
+         transversale_left[1] = 2;
+    }
+    bascule = !bascule
+})
+
+>>>>>>> ecc8572a6d3933c028808049941d680b710aa12e
 push2.addEventListener("click", function () {
   if (bascule == true) {
     push2.innerHTML = '<i class="fas fa-times"></i>';
@@ -141,4 +186,12 @@ push9.addEventListener("click", function () {
     transversale_left[3] = 2;
   }
   bascule = !bascule;
+<<<<<<< HEAD
 })
+=======
+<<<<<<< HEAD
+})
+=======
+})
+>>>>>>> ajout script js
+>>>>>>> ecc8572a6d3933c028808049941d680b710aa12e
