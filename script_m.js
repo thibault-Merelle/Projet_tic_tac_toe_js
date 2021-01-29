@@ -13,14 +13,19 @@ push.addEventListener("click", function() {
 
 //Selectionner tout les carre pour faire une liste
 
+let X = '<i class="fas fa-times"></i>'
+let O = '<i class="far fa-circle"></i>'
+
 let carre_list = document.querySelectorAll('.carre'); //selectorAll renvoie liste
 player_one = false; //permet de differencier player_one et player_two. L'un reste faux, l'autre est vrai
 console.log('return list of all carre element', carre_list);
 
 
+
 for( let item of carre_list) {
     /* cette for loop permet de parcourir une liste */
     item.addEventListener("click", (e) => {
+    win();
     let user_click = item.querySelector('span');
     /* permet de cibler un carre specfique où cliquera l'user */
     if(!player_one){
@@ -34,7 +39,7 @@ for( let item of carre_list) {
         player_one = false/*'<i class="far fa-circle"></i>'*/
     };
     /* on ré affirme condition = false pour avoir une alternance O */
-    win()
+    
 })};
 
 const cell = (n) => carre_list[n].querySelector('span').innerText; //recupere text
@@ -49,33 +54,33 @@ function win() {
     players.forEach((e) => {
 
         if (cell(0) == e && cell(1) == e && cell(2) == e){
-            alert("You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ")
         };
 
         if (cell(3) == e && cell(4)  == e && cell(5) == e){
-            alert("You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ")
         };
 
         if (cell(6) == e && cell(7)  == e && cell(8) == e){
-            alert("You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ")
         };
 
         if (cell(0) == e && cell(3)  == e && cell(6) == e){
-            alert("You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ")
         };
 
         if (cell(1) == e && cell(4)  == e && cell(7) == e){
-            alert("You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ")
         };
 
         if (cell(2) == e && cell(5)  == e && cell(8) == e){
-            alert("You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ")
         };
         if (cell(0) == e && cell(0)== e && cell(8) == e){
-            alert("You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ")
         }
         if (cell(2) == e && cell(4)== e && cell(6) == e){
-            alert("You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ")
         }
         
 
