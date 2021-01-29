@@ -28,20 +28,21 @@ for( let item of carre_list) {
     let user_click = item.querySelector('span');
     /* permet de cibler un carre specfique où cliquera l'user */
  
-    if(!player_one && user_click.innerText == ''){
+    if (!player_one){
         user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
         player_one = true;
         /* !player_one = player_two --> c'est pour ça que la condition change*/
         /* on renvoie un X  */
     }
-    else if (player_one && user_click.innerText == ''){
+    else if (player_one){
         user_click.innerText = "O" 
         player_one = false/*'<i class="far fa-circle"></i>'*/
     };
         
         /* on ré affirme condition = false pour avoir une alternance O */
        
-})};
+    }, {once: true});
+};
 
 
 document.querySelector("#reset").addEventListener("click", function() {
@@ -95,7 +96,7 @@ function win() {
             alert(e + " You're the winner ! :) ");
             reset();
         };
-        if (cell(0) == e && cell(0)== e && cell(8) == e){
+        if (cell(0) == e && cell(4)== e && cell(8) == e){
             alert(e + " You're the winner ! :) ");
             reset();
         }

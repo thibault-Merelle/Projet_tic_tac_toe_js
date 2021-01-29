@@ -42,15 +42,19 @@ p{
   box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
 }
 
-.btn:hover{
+.btn:hover, .carre:hover {
+
   opacity: .8;
+  box-shadow: -2px -2px 5px #488286, 2px 2px 5px #BABECC;
 }
 
 .container{
 
   display: grid;
   grid-template-columns: repeat(3, auto);
-  margin:3em 10em;
+  margin:0 auto;
+  max-width: 700px;
+  
 }
 
 
