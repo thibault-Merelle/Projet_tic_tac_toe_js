@@ -28,7 +28,7 @@ for( let item of carre_list) {
     win();
     let user_click = item.querySelector('span');
     /* permet de cibler un carre specfique où cliquera l'user */
-    if(!player_one){
+    if(!player_one && user_click != ""){
         user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
         player_one = true;
         /* !player_one = player_two --> c'est pour ça que la condition change*/
