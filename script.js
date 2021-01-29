@@ -18,6 +18,26 @@ let transversale_right = [0, 0, 0];
 let transversale_left = [0, 0, 0];
 
 <<<<<<< HEAD
+
+
+push1.addEventListener("click", function() {
+    if (bascule == true){
+        push1.innerHTML = '<i class="fas fa-times"></i>';
+        horizontale_haut[1] = 1;
+        verticale_left[1] = 1;
+        transversale_left[1] = 1;
+    }
+    else{
+        push1.innerHTML = '<i class="far fa-circle"></i>';
+         horizontale_haut[1] = 2;
+         verticale_left[1] = 2;
+         transversale_left[1] = 2;
+    }
+    bascule = !bascule
+})
+
+=======
+<<<<<<< HEAD
 let push1 = document.querySelector("#carre1");
 let push2 = document.querySelector("#carre2");
 let push3 = document.querySelector("#carre3");
@@ -59,6 +79,7 @@ push1.addEventListener("click", function() {
     bascule = !bascule
 })
 
+>>>>>>> ecc8572a6d3933c028808049941d680b710aa12e
 push2.addEventListener("click", function () {
   if (bascule == true) {
     push2.innerHTML = '<i class="fas fa-times"></i>';
@@ -168,5 +189,9 @@ push9.addEventListener("click", function () {
 <<<<<<< HEAD
 })
 =======
+<<<<<<< HEAD
+})
+=======
 })
 >>>>>>> ajout script js
+>>>>>>> ecc8572a6d3933c028808049941d680b710aa12e
