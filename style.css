@@ -32,9 +32,14 @@ p{
 }
 
 .btn {
-  padding: 1.3em 8em;
+  color: #69a9ad;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1.3em 4em;
   margin: 2em 0;
+  border: 1px #488286;
   border-radius: .8em;
+  box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
 }
 
 .btn:hover{
@@ -45,7 +50,7 @@ p{
 
   display: grid;
   grid-template-columns: repeat(3, auto);
-  margin: 3em auto;
+  margin:3em 10em;
 }
 
 
@@ -54,8 +59,16 @@ p{
 width: 200px;
 height: 200px;
 background-color: #69a9ad;
-border: 1px solid;
+border: 1px solid #488286;
 margin: .5em auto;
 border-radius: .8em;
-font-size: 3.5rem;
+box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
+
+}
+
+span{
+  color: #fff;
+  font-size: 10rem;
+  margin: auto;
+  text-shadow: 1px 1px 0 #fff;
 }

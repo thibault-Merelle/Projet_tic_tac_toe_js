@@ -18,6 +18,7 @@ let transversale_right = [0, 0, 0];
 let transversale_left = [0, 0, 0];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 push1.addEventListener("click", function() {
@@ -38,6 +39,8 @@ push1.addEventListener("click", function() {
 
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> test
 let push1 = document.querySelector("#carre1");
 let push2 = document.querySelector("#carre2");
 let push3 = document.querySelector("#carre3");
@@ -59,10 +62,6 @@ let transversale_left = [0, 0, 0];
 
 
 
-=======
-
-
->>>>>>> ajout script js
 push1.addEventListener("click", function() {
     if (bascule == true){
         push1.innerHTML = '<i class="fas fa-times"></i>';
