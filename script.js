@@ -1,38 +1,144 @@
+let push1 = document.querySelector("#carre1");
+let push2 = document.querySelector("#carre2");
+let push3 = document.querySelector("#carre3");
+let push4 = document.querySelector("#carre4");
+let push5 = document.querySelector("#carre5");
+let push6 = document.querySelector("#carre6");
+let push7 = document.querySelector("#carre7");
+let push8 = document.querySelector("#carre8");
+let push9 = document.querySelector("#carre9");
+let bascule = true;
+let horizontale_haut = [0, 0, 0];
+let horizontale_bas = [0, 0, 0];
+let horizontale_center = [0, 0, 0];
+let verticale_right = [0, 0, 0];
+let verticale_left = [0, 0, 0];
+let verticale_center = [0, 0, 0];
+let transversale_right = [0, 0, 0];
+let transversale_left = [0, 0, 0];
 
-/*let push = document.querySelector(".carre");
 
 
-push.addEventListener("click", function() {
-    let newL = document.createElement("div");
-    newL.innerHTML = '<i class="fas fa-times"></i>';
-    push.appendChild(newL);
-})*/
-
-
-// Ajout Marwa
-
-//Selectionner tout les carre pour faire une liste
-
-let carre_list = document.querySelectorAll('.carre'); //selectorAll renvoie liste
-player_one = false; //permet de differencier player_one et player_two. L'un reste faux, l'autre est vrai
-console.log('return list of all carre element', carre_list);
-
-
-for( let item of carre_list) {
-    /* cette for loop permet de parcourir une liste */
-    item.addEventListener("click", (e) => {
-    let user_click = item.querySelector('span');
-    /* permet de cibler un carre specfique où cliquera l'user */
-    if(!player_one){
-        user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
-        player_one = true;
-        /* !player_one = player_two --> c'est pour ça que la condition change*/
-        /* on renvoie un X  */
+push1.addEventListener("click", function() {
+    if (bascule == true){
+        push1.innerHTML = '<i class="fas fa-times"></i>';
+        horizontale_haut[1] = 1;
+        verticale_left[1] = 1;
+        transversale_left[1] = 1;
     }
-    else {
-        user_click.innerText = "O" 
-        player_one = false/*'<i class="far fa-circle"></i>'*/
-    };
-    /* on ré affirme condtion = false pour avoir une alternance O*/
-})};
+    else{
+        push1.innerHTML = '<i class="far fa-circle"></i>';
+         horizontale_haut[1] = 2;
+         verticale_left[1] = 2;
+         transversale_left[1] = 2;
+    }
+    bascule = !bascule
+})
 
+push2.addEventListener("click", function () {
+  if (bascule == true) {
+    push2.innerHTML = '<i class="fas fa-times"></i>';
+      horizontale_haut[2] = 1;
+      verticale_center[1] = 1;
+  } else {
+    push2.innerHTML = '<i class="far fa-circle"></i>';
+     horizontale_haut[2] = 2;
+     verticale_center[1] = 2;
+  }
+  bascule = !bascule;
+})
+push3.addEventListener("click", function () {
+  if (bascule == true) {
+    push3.innerHTML = '<i class="fas fa-times"></i>';
+     horizontale_haut[3] = 1;
+     verticale_right[1] = 1;
+     transversale_right[1] = 1;
+  } else {
+    push3.innerHTML = '<i class="far fa-circle"></i>';
+     horizontale_haut[3] = 2;
+     verticale_right[1] = 2;
+     transversale_right[1] = 2;
+  }
+  bascule = !bascule;
+})
+push4.addEventListener("click", function () {
+  if (bascule == true) {
+    push4.innerHTML = '<i class="fas fa-times"></i>';
+     horizontale_center[1] = 1;
+     verticale_left[2] = 1;
+  } else {
+    push4.innerHTML = '<i class="far fa-circle"></i>';
+    horizontale_center[1] = 2;
+    verticale_left[2] = 2;
+  }
+  bascule = !bascule;
+})
+push5.addEventListener("click", function () {
+  if (bascule == true) {
+    push5.innerHTML = '<i class="fas fa-times"></i>';
+    horizontale_center[2] = 1;
+    verticale_center[2] = 1;
+    transversale_right[2] = 1;
+    transversale_left[2] = 1;
+  } else {
+    push5.innerHTML = '<i class="far fa-circle"></i>';
+    horizontale_center[2] = 2;
+    verticale_center[2] = 2;
+    transversale_right[2] = 2;
+    transversale_left[2] = 2;
+  }
+  bascule = !bascule;
+})
+push6.addEventListener("click", function () {
+  if (bascule == true) {
+    push6.innerHTML = '<i class="fas fa-times"></i>';
+    horizontale_center[3] = 1;
+    verticale_right[2] = 1;
+  } else {
+    push6.innerHTML = '<i class="far fa-circle"></i>';
+    horizontale_center[3] = 2;
+    verticale_right[2] = 2;
+  }
+  bascule = !bascule;
+})
+push7.addEventListener("click", function () {
+  if (bascule == true) {
+    push7.innerHTML = '<i class="fas fa-times"></i>';
+    horizontale_bas[1] = 1;
+    verticale_left[3] = 1;
+    transversale_right[3] = 1;
+  } else {
+    push7.innerHTML = '<i class="far fa-circle"></i>';
+    horizontale_bas[1] = 2;
+    verticale_left[3] = 2;
+    transversale_right[3] = 2;
+  }
+  bascule = !bascule;
+})
+push8.addEventListener("click", function() {
+    if (bascule == true){
+        push8.innerHTML = '<i class="fas fa-times"></i>';
+        horizontale_bas[2] = 1;
+        verticale_center[3] = 1;
+    }
+    else{
+        push8.innerHTML = '<i class="far fa-circle"></i>';
+        horizontale_bas[2] = 2;
+        verticale_center[3] = 2;
+    }
+    bascule = !bascule
+})
+push9.addEventListener("click", function () {
+  if (bascule == true) {
+    push9.innerHTML = '<i class="fas fa-times"></i>';
+    horizontale_bas[3] = 1;
+    verticale_right[3] = 1;
+    transversale_left[3] = 1;
+  } else {
+    push9.innerHTML = '<i class="far fa-circle"></i>';
+    horizontale_bas[3] = 2;
+    verticale_right[3] = 2;
+    transversale_left[3] = 2;
+  }
+  bascule = !bascule;
+})
