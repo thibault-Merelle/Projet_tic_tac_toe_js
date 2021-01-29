@@ -50,23 +50,28 @@ p{
 
   display: grid;
   grid-template-columns: repeat(3, auto);
-  margin:3em 10em;
+  max-width: 800px;
+  margin: 3em auto;
 }
 
 
-.carre {
-
-width: 200px;
-height: 200px;
-background-color: #69a9ad;
-border: 1px solid #488286;
-margin: .5em auto;
-border-radius: .8em;
-box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
-
-}
+.carre {  
+  width: 200px; 
+  height: 200px; 
+  background-color: #69a9ad; 
+  border: 1px solid; 
+  margin: .5em auto; 
+  border-radius: .8em;  
+}  
 
 span{
+  width: 200px;
+  height: 200px;
+  background-color: #69a9ad;
+  border: 1px solid #488286;
+  margin: .5em auto;
+  border-radius: .8em;
+  box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
   color: #fff;
   font-size: 10rem;
   margin: auto;
