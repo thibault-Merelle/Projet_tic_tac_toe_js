@@ -55,8 +55,17 @@ let bascule = true;
 let gameFinish = false
 
 let tableau = [[0, 0, 0], 
-               [0, 0, 0], 
-               [0, 0, 0]]
+                [0, 0, 0], 
+                [0, 0, 0]]
+
+
+let liste_exp = [X, O, X, O, X]:
+for (let i = 0; i < liste_exp.length; i++){
+  for (let j = i + 1; j < liste_exp.length; j++){
+    if i == j:
+
+  }
+}
 
 function check(){
     let check1 = triage_horizontale();
