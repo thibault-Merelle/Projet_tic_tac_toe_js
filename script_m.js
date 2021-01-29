@@ -1,7 +1,4 @@
-
-/*let push = document.querySelector(".carre");
-
-
+/*
 push.addEventListener("click", function() {
     let newL = document.createElement("div");
     newL.innerHTML = '<i class="fas fa-times"></i>';
@@ -15,9 +12,11 @@ push.addEventListener("click", function() {
 
 let X = '<i class="fas fa-times"></i>'
 let O = '<i class="far fa-circle"></i>'
+let cell = (n) => carre_list[n].querySelector('span').innerText; //recupere text
 
 let carre_list = document.querySelectorAll('.carre'); //selectorAll renvoie liste
 player_one = false; //permet de differencier player_one et player_two. L'un reste faux, l'autre est vrai
+stop_play = false;
 console.log('return list of all carre element', carre_list);
 
 
@@ -28,22 +27,36 @@ for( let item of carre_list) {
     win();
     let user_click = item.querySelector('span');
     /* permet de cibler un carre specfique où cliquera l'user */
-    if(!player_one){
+ 
+    if (!player_one){
         user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
         player_one = true;
         /* !player_one = player_two --> c'est pour ça que la condition change*/
         /* on renvoie un X  */
     }
-    else {
+    else if (player_one){
         user_click.innerText = "O" 
         player_one = false/*'<i class="far fa-circle"></i>'*/
     };
-    /* on ré affirme condition = false pour avoir une alternance O */
+        
+        /* on ré affirme condition = false pour avoir une alternance O */
+       
+    }, {once: true});
+};
+
+
+document.querySelector("#reset").addEventListener("click", function() {
+    reset();
+    });
     
-})};
-
-const cell = (n) => carre_list[n].querySelector('span').innerText; //recupere text
-
+function reset(){
+    node = document.querySelectorAll(".carre")
+    for (let item in node){
+        if (node[item].hasChildNodes){
+            node[item].lastChild.innerText = '';
+        }
+    }
+}
 /*appelle l'index de la liste des carre, 
 selectionne n pour basculer de "X" à "O", 
 inner text pour renvoyer la valeur*/
@@ -54,44 +67,59 @@ function win() {
     players.forEach((e) => {
 
         if (cell(0) == e && cell(1) == e && cell(2) == e){
-            alert(e + " You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ");
+            reset();
         };
 
         if (cell(3) == e && cell(4)  == e && cell(5) == e){
-            alert(e + " You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ");
+            reset();
+            
         };
 
         if (cell(6) == e && cell(7)  == e && cell(8) == e){
-            alert(e + " You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ");
+            reset();
         };
 
         if (cell(0) == e && cell(3)  == e && cell(6) == e){
-            alert(e + " You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ");
+            reset();
         };
 
         if (cell(1) == e && cell(4)  == e && cell(7) == e){
-            alert(e + " You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ");
+            reset();
         };
 
         if (cell(2) == e && cell(5)  == e && cell(8) == e){
-            alert(e + " You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ");
+            reset();
         };
-        if (cell(0) == e && cell(0)== e && cell(8) == e){
-            alert(e + " You're the winner ! :) ")
+        if (cell(0) == e && cell(4)== e && cell(8) == e){
+            alert(e + " You're the winner ! :) ");
+            reset();
         }
         if (cell(2) == e && cell(4)== e && cell(6) == e){
-            alert(e + " You're the winner ! :) ")
+            alert(e + " You're the winner ! :) ");
+            reset();
         }
+        // else{
+        // for (let i = 0 ; cell[i] == e; i++){
+        //     alert('eguality');
+        //     reset();
+        //     }
+        // }
         
 
         // Si toutes les cellules contienne la meme valeur, alors le joueur à gagner
         // Modifier la valeur alert, pour renvoyer un texte sous le jeu
         // Si X, dire que player one à gagner
         // Si O, dire que player two à gagner
-        
-
     });
 };
+
+
 
 
 /*
