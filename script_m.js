@@ -43,7 +43,7 @@ for( let item of carre_list) {
 })};
 
 const cell = (n) => carre_list[n].querySelector('span').innerText; //recupere text
-
+con
 /*appelle l'index de la liste des carre, 
 selectionne n pour basculer de "X" à "O", 
 inner text pour renvoyer la valeur*/
