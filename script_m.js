@@ -24,23 +24,24 @@ console.log('return list of all carre element', carre_list);
 for( let item of carre_list) {
     /* cette for loop permet de parcourir une liste */
     item.addEventListener("click", (e) => {
-    win();
-    let user_click = item.querySelector('span');
-    /* permet de cibler un carre specfique où cliquera l'user */
- 
-    if (!player_one){
-        user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
-        player_one = true;
-        /* !player_one = player_two --> c'est pour ça que la condition change*/
-        /* on renvoie un X  */
-    }
-    else if (player_one){
-        user_click.innerText = "O" 
-        player_one = false/*'<i class="far fa-circle"></i>'*/
-    };
+    
+        let user_click = item.querySelector('span');
+        /* permet de cibler un carre specfique où cliquera l'user */
+        let result = win();
+        console.log(result);
+        if (!player_one){
+            user_click.innerText = 'X'; /*<i class="fas fa-times"></i> (a ajouter) */
+            player_one = true;
+            /* !player_one = player_two --> c'est pour ça que la condition change*/
+            /* on renvoie un X  */
+        }
+        else if (player_one){
+            user_click.innerText = "O"; 
+            player_one = false/*'<i class="far fa-circle"></i>'*/
+        };
         
         /* on ré affirme condition = false pour avoir une alternance O */
-       
+
     }, {once: true});
 };
 
@@ -69,40 +70,50 @@ function win() {
         if (cell(0) == e && cell(1) == e && cell(2) == e){
             alert(e + " You're the winner ! :) ");
             reset();
-        };
-
-        if (cell(3) == e && cell(4)  == e && cell(5) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-            
-        };
-
-        if (cell(6) == e && cell(7)  == e && cell(8) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-        };
-
-        if (cell(0) == e && cell(3)  == e && cell(6) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-        };
-
-        if (cell(1) == e && cell(4)  == e && cell(7) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-        };
-
-        if (cell(2) == e && cell(5)  == e && cell(8) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-        };
-        if (cell(0) == e && cell(4)== e && cell(8) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
+            return "false";
         }
-        if (cell(2) == e && cell(4)== e && cell(6) == e){
+
+        else if (cell(3) == e && cell(4)  == e && cell(5) == e){
             alert(e + " You're the winner ! :) ");
             reset();
+            return "false";
+        }
+
+        else if (cell(6) == e && cell(7)  == e && cell(8) == e){
+            alert(e + " You're the winner ! :) ");
+            reset();
+            return "false";
+        }
+
+        else if (cell(0) == e && cell(3)  == e && cell(6) == e){
+            alert(e + " You're the winner ! :) ");
+            reset();
+            return "false";
+        }
+
+        else if (cell(1) == e && cell(4)  == e && cell(7) == e){
+            alert(e + " You're the winner ! :) ");
+            reset();
+            return "false";
+        }
+
+        else if (cell(2) == e && cell(5)  == e && cell(8) == e){
+            alert(e + " You're the winner ! :) ");
+            reset();
+            return "false";
+        }
+        else if (cell(0) == e && cell(4)== e && cell(8) == e){
+            alert(e + " You're the winner ! :) ");
+            reset();
+            return "false";
+        }
+        else if (cell(2) == e && cell(4)== e && cell(6) == e){
+            alert(e + " You're the winner ! :) ");
+            reset();
+            return "false";
+        }
+        else{
+            return "true";
         }
         // else{
         // for (let i = 0 ; cell[i] == e; i++){
