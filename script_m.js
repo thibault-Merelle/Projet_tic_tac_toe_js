@@ -1,13 +1,3 @@
-/*
-push.addEventListener("click", function() {
-    let newL = document.createElement("div");
-    newL.innerHTML = '<i class="fas fa-times"></i>';
-    push.appendChild(newL);
-})*/
-
-
-// Ajout Marwa
-
 //Selectionner tout les carre pour faire une liste
 
 let X = '<i class="fas fa-times"></i>'
@@ -28,18 +18,18 @@ for( let item of carre_list) {
     let user_click = item.querySelector('span');
     /* permet de cibler un carre specfique où cliquera l'user */
  
-    if (!player_one){
+    if (!player_one && user_click != ""){
         user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
         player_one = true;
         /* !player_one = player_two --> c'est pour ça que la condition change*/
         /* on renvoie un X  */
     }
-    else if (player_one){
+    else if (player_one && user_click != ""){
         user_click.innerText = "O" 
         player_one = false/*'<i class="far fa-circle"></i>'*/
-    };
         
-        /* on ré affirme condition = false pour avoir une alternance O */
+    };
+        /* on ré affirme condition = false pour avoir une alternance O / X */
        
     }, {once: true});
 };
@@ -111,11 +101,6 @@ function win() {
         //     }
         // }
         
-
-        // Si toutes les cellules contienne la meme valeur, alors le joueur à gagner
-        // Modifier la valeur alert, pour renvoyer un texte sous le jeu
-        // Si X, dire que player one à gagner
-        // Si O, dire que player two à gagner
     });
 };
 
