@@ -51,138 +51,191 @@ let push7 = document.querySelector("#carre7");
 let push8 = document.querySelector("#carre8");
 let push9 = document.querySelector("#carre9");
 let bascule = true;
-let horizontale_haut = [0, 0, 0];
-let horizontale_bas = [0, 0, 0];
-let horizontale_center = [0, 0, 0];
-let verticale_right = [0, 0, 0];
-let verticale_left = [0, 0, 0];
-let verticale_center = [0, 0, 0];
-let transversale_right = [0, 0, 0];
-let transversale_left = [0, 0, 0];
 
+let gameFinish = false
+
+let tableau = [[0, 0, 0], 
+                [0, 0, 0], 
+                [0, 0, 0]]
+
+
+let liste_exp = [X, O, X, O, X]:
+for (let i = 0; i < liste_exp.length; i++){
+  for (let j = i + 1; j < liste_exp.length; j++){
+    if i == j:
+
+  }
+}
+
+function check(){
+    let check1 = triage_horizontale();
+    let check2 = triage_transversale();
+    let check3 = triage_verticale();
+    if (check1 === true){
+        return true;
+    }
+    if (check2 === true){
+        return true;
+    }
+    if (check3 === true){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function triage_horizontale(){
+
+    for (let i = 0; i < tableau.length; i++){
+        let equality = 0;
+        for (let j = 0; j < tableau[i].length; j++){
+            for(let k = j + 1; k < tableau[i].length; k++){
+                if (tableau[i][j] == tableau[i][k]){
+                    equality++;
+                }
+                if (equality == 2){
+                    return true;
+                }
+            }
+        }
+    
+    }
+    return false;
+}
+function triage_transversale(){
+    if ((tableau[0][0] == tableau[1][1]) && (tableau[1][1] == tableau[2][2])){
+        return true;
+    }
+    else if ((tableau[0][2] == tableau[1][1]) && (tableau[1][1] == tab[2][0])){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+function triage_verticale(){
+    
+    let count = 0;
+    while(count < 3){
+        let equality = 0;
+        let i = 0;
+        while(i < 3){
+            let j = i + 1;
+            while(j < 3){
+                if tableau[i][count] == tableau[j][count]{
+                    equality++;
+                }
+                if(equality == 2){
+                    return true;
+                }
+                j++;
+            }
+            i++;
+        }
+        count++;
+    }
+    return false;
+}
 
 
 push1.addEventListener("click", function() {
-    if (bascule == true){
-        push1.innerHTML = '<i class="fas fa-times"></i>';
-        horizontale_haut[1] = 1;
-        verticale_left[1] = 1;
-        transversale_left[1] = 1;
+    gameFinish = check();
+    if (gameFinish === false){
+        if (bascule == true){
+            push1.innerHTML = '<i class="fas fa-times"></i>';
+            tableau[0][0] = 1;
+        }
+        else{
+            push1.innerHTML = '<i class="far fa-circle"></i>';
+            tableau[0][0] = 2;
+        }
+        bascule = !bascule
     }
-    else{
-        push1.innerHTML = '<i class="far fa-circle"></i>';
-         horizontale_haut[1] = 2;
-         verticale_left[1] = 2;
-         transversale_left[1] = 2;
+    else {
+        break;
     }
-    bascule = !bascule
 })
 
 >>>>>>> ecc8572a6d3933c028808049941d680b710aa12e
 push2.addEventListener("click", function () {
   if (bascule == true) {
     push2.innerHTML = '<i class="fas fa-times"></i>';
-      horizontale_haut[2] = 1;
-      verticale_center[1] = 1;
+      tableau[0][1] = 1;
   } else {
     push2.innerHTML = '<i class="far fa-circle"></i>';
-     horizontale_haut[2] = 2;
-     verticale_center[1] = 2;
+     tableau[0][1] = 2;
   }
   bascule = !bascule;
 })
 push3.addEventListener("click", function () {
   if (bascule == true) {
     push3.innerHTML = '<i class="fas fa-times"></i>';
-     horizontale_haut[3] = 1;
-     verticale_right[1] = 1;
-     transversale_right[1] = 1;
+     tableau[0][2] = 1;
   } else {
     push3.innerHTML = '<i class="far fa-circle"></i>';
-     horizontale_haut[3] = 2;
-     verticale_right[1] = 2;
-     transversale_right[1] = 2;
+    tableau[0][2] = 2;
   }
   bascule = !bascule;
 })
 push4.addEventListener("click", function () {
   if (bascule == true) {
     push4.innerHTML = '<i class="fas fa-times"></i>';
-     horizontale_center[1] = 1;
-     verticale_left[2] = 1;
+   tableau[1][0] = 1;
   } else {
     push4.innerHTML = '<i class="far fa-circle"></i>';
-    horizontale_center[1] = 2;
-    verticale_left[2] = 2;
+    tableau[1][0] = 2;
   }
   bascule = !bascule;
 })
 push5.addEventListener("click", function () {
   if (bascule == true) {
     push5.innerHTML = '<i class="fas fa-times"></i>';
-    horizontale_center[2] = 1;
-    verticale_center[2] = 1;
-    transversale_right[2] = 1;
-    transversale_left[2] = 1;
+    tableau[1][1] = 1;
   } else {
     push5.innerHTML = '<i class="far fa-circle"></i>';
-    horizontale_center[2] = 2;
-    verticale_center[2] = 2;
-    transversale_right[2] = 2;
-    transversale_left[2] = 2;
+    tableau[1][1] = 2;
   }
   bascule = !bascule;
 })
 push6.addEventListener("click", function () {
   if (bascule == true) {
     push6.innerHTML = '<i class="fas fa-times"></i>';
-    horizontale_center[3] = 1;
-    verticale_right[2] = 1;
+    tableau[1][2] = 1;
   } else {
     push6.innerHTML = '<i class="far fa-circle"></i>';
-    horizontale_center[3] = 2;
-    verticale_right[2] = 2;
+    tableau[1][2] = 2;
   }
   bascule = !bascule;
 })
 push7.addEventListener("click", function () {
   if (bascule == true) {
     push7.innerHTML = '<i class="fas fa-times"></i>';
-    horizontale_bas[1] = 1;
-    verticale_left[3] = 1;
-    transversale_right[3] = 1;
+    tableau[2][0] = 1;
   } else {
     push7.innerHTML = '<i class="far fa-circle"></i>';
-    horizontale_bas[1] = 2;
-    verticale_left[3] = 2;
-    transversale_right[3] = 2;
+    tableau[2][0] = 2;
   }
   bascule = !bascule;
 })
 push8.addEventListener("click", function() {
     if (bascule == true){
         push8.innerHTML = '<i class="fas fa-times"></i>';
-        horizontale_bas[2] = 1;
-        verticale_center[3] = 1;
+        tableau[2][1] = 1;
     }
     else{
         push8.innerHTML = '<i class="far fa-circle"></i>';
-        horizontale_bas[2] = 2;
-        verticale_center[3] = 2;
+        tableau[2][1] = 2;
     }
     bascule = !bascule
 })
 push9.addEventListener("click", function () {
   if (bascule == true) {
     push9.innerHTML = '<i class="fas fa-times"></i>';
-    horizontale_bas[3] = 1;
-    verticale_right[3] = 1;
-    transversale_left[3] = 1;
+    tableau[2][2] = 1;
   } else {
     push9.innerHTML = '<i class="far fa-circle"></i>';
-    horizontale_bas[3] = 2;
-    verticale_right[3] = 2;
-    transversale_left[3] = 2;
+    tableau[2][2] = 2;
   }
   bascule = !bascule;
 <<<<<<< HEAD
