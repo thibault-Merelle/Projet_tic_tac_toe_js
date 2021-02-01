@@ -7,31 +7,35 @@ let cell = (n) => carre_list[n].querySelector('span').innerText; //recupere text
 let carre_list = document.querySelectorAll('.carre'); //selectorAll renvoie liste
 player_one = false; //permet de differencier player_one et player_two. L'un reste faux, l'autre est vrai
 stop_play = false;
-console.log('return list of all carre element', carre_list);
+//console.log('return list of all carre element', carre_list);
 
 
 
 for( let item of carre_list) {
     /* cette for loop permet de parcourir une liste */
     item.addEventListener("click", (e) => {
-    win();
     let user_click = item.querySelector('span');
     /* permet de cibler un carre specfique où cliquera l'user */
  
-    if (!player_one && user_click != ""){
+    if (!player_one){
         user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
         player_one = true;
         /* !player_one = player_two --> c'est pour ça que la condition change*/
         /* on renvoie un X  */
     }
-    else if (player_one && user_click != ""){
+    else if (player_one){
         user_click.innerText = "O" 
         player_one = false/*'<i class="far fa-circle"></i>'*/
         
     };
         /* on ré affirme condition = false pour avoir une alternance O / X */
-       
-    }, {once: true});
+        
+        setTimeout(function() {
+            win();
+        },10)
+
+    });
+
 };
 
 
@@ -47,6 +51,7 @@ function reset(){
         }
     }
 }
+
 /*appelle l'index de la liste des carre, 
 selectionne n pour basculer de "X" à "O", 
 inner text pour renvoyer la valeur*/
