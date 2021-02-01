@@ -44,6 +44,10 @@ player_desktop.addEventListener("click", function () {
     div_option.appendChild(btn_option_2);
     desktop_play = true;
     console.log("mohamed");
+    player[1] = "O";
+    player[0] = "X";
+    game();
+    console.log("we")
   },
   { once: true }
 );
@@ -71,9 +75,10 @@ function recup_copy_list(){                     /* fonction qui copie la liste d
     for (let i = 0; list_carre.length; i++){
         list_copy.push(i);
     }
+    return list_copy;
 }
 
-function recup_index_vide(){                     /* fonction qui mélange la liste d'index vide et qui retourne un index */
+function recup_index_vide(list_copy){                     /* fonction qui mélange la liste d'index vide et qui retourne un index */
     list_copy.sort(function () {
         return Math.random() - 0.5;
     });
@@ -107,75 +112,7 @@ if (reset_game_btn){                      /* bouton pour recommencer */
     reset_game_btn.addEventListener("click", reset())
 }
 
-function game(){
-    if (desktop_play == true){                                        /*le cas ou on joue contre l'ordi*/
-        if(desk_have_play == false){                                  /* le tour de l'ordi de jouer */
-            i = recup_index_vide();
-            if (player[0] != "" && player[1] != "" && player[1] != player[0]) {
-              result = win();
-              if (result == false) {
-                    if (list_carre[i].innerText == "") {
-                    list_carre[i].innerText = player[0];
-                    list_index_out.push(list_copy.splice(i, 1));
-                    bascule = !bascule;
-                    desk_have_play = !desk_have_play;
-                    result = win();
-                    if (result == true) {
-                        reset_game();
-                    }
-                    } 
-                    else {
-                    if ((list_carre[i].innerText != "") && (case_vide() == true)) {
-                        alert("Veuillez choisir une autre CASE !");
-                    } 
-                    else if ((list_carre[i].innerText != "") && (case_vide() == false)) {
-                        reset();
-                    }
-                    }
-              } 
-              else {
-                reset_game();
-              }
-            } else {
-              alert("Veuillez sélectionner la CROIX ou le CERCLE !");
-            }
-        }
-        else if (desk_have_play == true){                              /* le tout du users de jouer */
-            for (let i = 0; i < list_carre.length; i++) {
-              list_carre[i].addEventListener("click", function () {
-                if (player[0] != "" && player[1] != "" && player[1] != player[0]) {
-                  result = win();
-                  if (result == false) {
-                        if (list_carre[i].innerText == "") {
-                        list_carre[i].innerText = player[1];
-                        list_index_out.push(list_copy.splice(i, 1));
-                        bascule = !bascule;
-                        desk_have_play = !desk_have_play;
-                        result = win();
-                        if (result == true) {
-                            reset_game();
-                        }
-                        } 
-                        else {
-                        if ((list_carre[i].innerText != "") && (case_vide() == true)) {
-                            alert("Veuillez choisir une autre CASE !");
-                        } else if ((list_carre[i].innerText != "") && (case_vide() == false)) {
-                            reset();
-                        }
-                        }
-                  } 
-                  else {
-                    reset_game();
-                  }
-                } else {
-                  alert("Veuillez sélectionner la CROIX ou le CERCLE !");
-                }
-              });
-            }
-        }
-
-    }
-    else {                                                            /* le cas ou on a 2 joueurs */
+function game_users(){                                                          /* le cas ou on a 2 joueurs */
         for (let i = 0; i < list_carre.length; i++){
             list_carre[i].addEventListener("click", function(){
                 if ((player[0] != "") && (player[1] != "") && (player[1] != player[0])){
@@ -217,8 +154,52 @@ function game(){
                 }
             })
         }
-    }
 }
+
+function game_desk(){                         /* le cas ou on joue contre l'ordi */
+      for (let i = 0; i < list_carre.length; i++) {
+        list_carre[i].addEventListener("click", function () {
+          if (player[0] != "" && player[1] != "" && player[1] != player[0]) {
+            result = win();
+            if (result == false) {
+                j = recup_index_vide(recup_copy_list());
+              if (list_carre[i].innerText == "") {
+                list_carre[i].innerText = player[0];
+                list_index_out.push(list_copy.splice(list_copy.indexOf(element), 1));
+                bascule = !bascule;
+                result = win();
+                if (result == true) {
+                  reset_game();
+                }
+              } else if (!bascule && list_carre[i].innerText == "") {
+                list_carre[i].innerText = player[1];
+                list_index_out.push(list_copy.splice(i, 1));
+                bascule = !bascule;
+                result = win();
+                if (result == true) {
+                  reset_game();
+                }
+              } else {
+                if (list_carre[i].innerText != "" && case_vide() == true) {
+                  alert("Veuillez choisir une autre CASE !");
+                } else if (
+                  list_carre[i].innerText != "" &&
+                  case_vide() == false
+                ) {
+                  reset();
+                }
+              }
+            } else {
+              reset_game();
+            }
+          } else {
+            alert("Veuillez sélectionner la CROIX ou le CERCLE !");
+          }
+        });
+      }
+
+}
+
 function win(){                                        /* fonction qui teste si on a une combinaison gagnante */
     for (let i of player){
         if (recup(0) == i && recup(1) == i && recup(2) == i){
