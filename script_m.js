@@ -75,6 +75,7 @@ function reset(){
     //player_one = !player_one;
     console.log("apres: " +player_one)
 }
+
 /*appelle l'index de la liste des carre, 
 selectionne n pour basculer de "X" à "O", 
 inner text pour renvoyer la valeur*/
