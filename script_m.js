@@ -19,8 +19,15 @@ let countp2 = 0;
 let carre_list = document.querySelectorAll('.carre'); //selectorAll renvoie liste
 let player_one = false; //permet de differencier player_one et player_two. L'un reste faux, l'autre est vrai
 let stop_play = false;
+let play_desktop = document.querySelector("#desktop");
+let desk_play = false;
+let list_copy = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let index_out = [];
 console.log('return list of all carre element', carre_list);
-
+function mix_list(){
+    list_copy.sort(function(){ return math.random() - 0.5});
+    return list_copy;
+}
 function fswitch(){
     if(!player_one){
         document.getElementById("carrep1").innerText = 'X';
@@ -29,29 +36,60 @@ function fswitch(){
     if(player_one){
         document.getElementById("carrep1").innerText = '';
         document.getElementById("carrep2").innerText = 'O';
-    }}
+    }
+}
 
+play_desktop.addEventListener("click", function(){
+    if (player_one){
+    player = "X";
+    desktop = "O";
+    }
+    else if (!player_one){
+        player = "O";
+        desktop = "X";
+    }
+    play_with_desk();
+})
 
+function play_with_desk(){
+    for (let i; i < carre_list.length; i++){
+        carre_list[i].addEventListener("click", function () {
+          let user_click = carre_list[i].querySelector("span");
+          j = mix_list[0];
+          let user_click_2 = carre_list[j].querySelector("span");
 
+          user_click.innerText = player; /*player joue*/
+          index_out.push(list_copy.splice(list_copy.indexOf(i), 1));
+          j = mix_list[0];
+          user_click_2.innerText = desktop;
+          index_out.push(list_copy.splice(0, 1));
+        });
+    }
+    
+}
+function play_with_players(){
 for( let item of carre_list) {
     /* cette for loop permet de parcourir une liste */
     item.addEventListener("click", (e) => {
     let user_click = item.querySelector('span');
     /* permet de cibler un carre specfique où cliquera l'user */
- 
-    if (!player_one){
-        user_click.innerText = 'X'; /*<i class="fas fa-times"></i> (a ajouter) */;
-        player_one = true;
-        fswitch();
-        /* !player_one = player_two --> c'est pour ça que la condition change*/
-        /* on renvoie un X  */
+    if (user_click.innerText == ""){
+            if (!player_one){
+                user_click.innerText = 'X'; /*<i class="fas fa-times"></i> (a ajouter) */;
+                player_one = true;
+                fswitch();
+                /* !player_one = player_two --> c'est pour ça que la condition change*/
+                /* on renvoie un X  */
+            }
+            else if (player_one){
+                user_click.innerText = "O";
+                player_one = false/*'<i class="far fa-circle"></i>'*/
+                fswitch();
+        }
     }
-    else if (player_one){
-        user_click.innerText = "O";
-        player_one = false/*'<i class="far fa-circle"></i>'*/
-        fswitch();
-        
-    };
+    else{
+        alert("Veuillez choisir une autre CASE !");
+    }
         /* on ré affirme condition = false pour avoir une alternance O / X */
         
         // https://stackoverflow.com/questions/40724697/javascript-do-something-before-alert
@@ -64,6 +102,7 @@ for( let item of carre_list) {
     });
 
 };
+}
 
 
 document.querySelector("#reset").addEventListener("click", function() {
@@ -76,6 +115,9 @@ function reset(){
         if (node[item].hasChildNodes){
             node[item].lastChild.innerText = '';
         }
+    }
+    for (let i; i < index_out.length; i++){
+        list_copy.push(index_out[i]);
     }
     console.log("avant: " +player_one)
     //player_one = !player_one;

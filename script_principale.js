@@ -54,12 +54,9 @@ function reset(){                               /* fonction qui remet la grille 
     recup_copy_list();
 }
 function reset_game(){                             /* fonction qui remet tous le jeux à zero */
-    for (let i = 0; i < list_carre.length; i++){
-      list_carre[i].innerText = "";
-      console.log("contenu :" + list_carre[i].innerText);
-    }
-    player[0] = "";
-    player[1] = "";
+    reset();
+    player[0] = '';
+    player[1] = '';
     console.log("play_1 :" + player[0], "play_2 :" + player[1]);
 }
 function case_vide(){                           /* fonction qui vérifie si il reste une case vide */
@@ -75,7 +72,7 @@ function print_play(i, player){
     bascule = !bascule;
     result = win();
     console.log(result);
-    if (result == true){
+    if (win()){
       reset_game();
     }
 }
@@ -88,23 +85,25 @@ function game_users(){                                                          
             list_carre[i].addEventListener("click", function(){
                 if ((player[0] != "") && (player[1] != "")){
                     result = win()
-                    if ((result == false)){
-                        if ((bascule) && (list_carre[i].innerText == "")){
+                    if (!win()){
+                        if ((bascule) && (this.innerText == "")){
                             print_play(i, player[0]);
                           
                         }
-                        else if ((!bascule) && (list_carre[i].innerText == "")) {
+                        else if ((!bascule) && (this.innerText == "")) {
                             print_play(i, player[1]);
                             
                         } 
-                        else if ((list_carre[i].innerText != "") && (case_vide() == true)){
-                                alert("Veuillez choisir une autre CASE !");
-                            }
-                        else {
+                        else if ((this.innerText != "")){
+                          if (!case_vide()){
                                 reset();
                             }
+                        else {
+                                alert("Veuillez choisir une autre CASE !");
+                            }
                         }
-                    else if (result == true){
+                        }
+                    else if (win()){
                           reset_game();
                     }
                 }
@@ -116,7 +115,6 @@ function game_users(){                                                          
 }
 
 function game_desk(){                         /* le cas ou on joue contre l'ordi */
-      
       for (let i = 0; i < list_carre.length; i++) {
         list_carre[i].addEventListener("click", function () {
           if (player[0] != "" && player[1] != "" && player[1] != player[0]) {
@@ -124,7 +122,7 @@ function game_desk(){                         /* le cas ou on joue contre l'ordi
             if (result == false) {
               if (list_carre[i].innerText == ""){
                   list_carre[i].innerText = player[0];
-                  list_copy.splice(i, 1);
+                  list_copy.splice(list_copy.indexOf(i), 1);
                   console.log("user");
                   console.log(list_copy);                  
                   result = win();
@@ -174,35 +172,35 @@ function game_desk(){                         /* le cas ou on joue contre l'ordi
 
 function win(){                                        /* fonction qui teste si on a une combinaison gagnante */
     for (let i of player){
-        if (recup(0) == i && recup(1) == i && recup(2) == i){
+        if ((recup(0) == i) && (recup(1) == i) && (recup(2) == i)){
             alert("le Joueur jouant avec " + i + " a gagné")
             return true;
         }
-        else if (recup(3) == i && recup(4) == i && recup(5) == i) {
+        else if ((recup(3) == i) && (recup(4) == i) && (recup(5) == i)) {
           alert("le Joueur jouant avec " + i + " a gagné");
           return true;
         }
-        else if (recup(6) == i && recup(7) == i && recup(8) == i) {
+        else if ((recup(6) == i) && (recup(7) == i) && (recup(8) == i)) {
           alert("le Joueur jouant avec " + i + " a gagné");
           return true;
         }
-        else if (recup(0) == i && recup(3) == i && recup(6) == i) {
+        else if ((recup(0) == i) && (recup(3) == i) && (recup(6) == i)) {
           alert("le Joueur jouant avec " + i + " a gagné");
           return true;
         }
-        else if (recup(1) == i && recup(4) == i && recup(7) == i) {
+        else if ((recup(1) == i) && (recup(4) == i) && (recup(7) == i)) {
           alert("le Joueur jouant avec " + i + " a gagné");
           return true;
         }
-        else if (recup(2) == i && recup(5) == i && recup(8) == i) {
+        else if ((recup(2) == i) && (recup(5) == i) && (recup(8) == i)) {
           alert("le Joueur jouant avec " + i + " a gagné");
           return true;
         }
-        else if (recup(0) == i && recup(4) == i && recup(8) == i) {
+        else if ((recup(0) == i) && (recup(4) == i) && (recup(8) == i)) {
           alert("le Joueur jouant avec " + i + " a gagné");
           return true;
         }
-        else if (recup(2) == i && recup(4) == i && recup(6) == i) {
+        else if ((recup(2) == i) && (recup(4) == i) && (recup(6) == i)) {
           alert("le Joueur jouant avec " + i + " a gagné");
           return true;
         }
