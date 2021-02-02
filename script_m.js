@@ -91,18 +91,18 @@ function win() {
     players.forEach((e) => {
 
         function display_player(){
-            let quote = " : "
         if (e == "X"){
             alert("Player one :" + " You're the winner ! :) ");
             countp1 +=1;
-            document.getElementById("score").innerText = countp1+ quote + countp2
+            document.getElementById("score").innerText = `${countp1}:${countp2}`
+            //countp1+ " : " + countp2
             console.log(countp1);
             reset();
         }
         else if (e = "O"){
             alert("Player two :" + " You're the winner ! :) ");
             countp2 +=1;
-            document.getElementById("score").innerText = countp1 + quote + countp2
+            document.getElementById("score").innerText = countp1 + ":" + countp2
             console.log(countp2);
             reset();
         }}
