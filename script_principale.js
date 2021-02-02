@@ -18,15 +18,27 @@ let desk_have_play = false;
 
 circle_btn_1.addEventListener("click", function(){
     player[0] = "O";
+    if (player[1] == "X"){
+      game_users();
+    }
 })
 cross_btn_1.addEventListener("click", function () {
   player[0] = "X";
+  if (player[1] == "O") {
+    game_users();
+  }
 })
 circle_btn_2.addEventListener("click", function () {
   player[1] = "O";
+  if (player[0] == "X") {
+    game_users();
+  }
 })
 cross_btn_2.addEventListener("click", function () {
   player[1] = "X";
+  if (player[0] == "O") {
+    game_users();
+  }
 })
 
 
@@ -44,12 +56,12 @@ player_desktop.addEventListener("click", function () {
     div_option.appendChild(btn_option_2);
     desktop_play = true;
     console.log("mohamed");
-    player[1] = "O";
-    player[0] = "X";
-    game();
+    player[0] = "O";
+    player[1] = "X";
+    recup_copy_list();
+    game_desk();
     console.log("we")
-  },
-  { once: true }
+  }
 );
 if (circle_btn_3){                                     /* bouton cercle pour le user contre l'ordi */
     circle_btn_3.addEventListener("click", function(){
@@ -72,17 +84,16 @@ if (cross_btn_3){                                       /* bouton cross pour le 
 }
 
 function recup_copy_list(){                     /* fonction qui copie la liste de grille pour en faire une list d'index */
-    for (let i = 0; list_carre.length; i++){
+    for (let i = 0; i < list_carre.length; i++){
         list_copy.push(i);
     }
-    return list_copy;
 }
 
 function recup_index_vide(list_copy){                     /* fonction qui mélange la liste d'index vide et qui retourne un index */
     list_copy.sort(function () {
-        return Math.random() - 0.5;
+        return Math.random() - 0.5
     });
-    return list_copy[0];
+    return list_copy;
 }
 
 function recup(n){                               /* fonction qui recuperer la valeur de la case */
@@ -92,6 +103,7 @@ function reset(){                               /* fonction qui remet la grille 
     for (let i = 0; i < list_carre.length; i++){
         list_carre[i].innerText = "";
     }
+    recup_copy_list();
 }
 function reset_game(){                             /* fonction qui remet tous le jeux à zero */
     for (let i = 0; i < list_carre.length; i++) {
@@ -108,6 +120,14 @@ function case_vide(){                           /* fonction qui vérifie si il r
     }
     return false;
 }
+function print_play(i, player){
+    list_carre[i].innerText = player;
+    bascule = !bascule;
+    result = win();
+    if (result == true){
+      reset_game();
+    }
+}
 if (reset_game_btn){                      /* bouton pour recommencer */
     reset_game_btn.addEventListener("click", reset())
 }
@@ -119,22 +139,10 @@ function game_users(){                                                          
                     result = win()
                     if ((result == false)){
                         if ((bascule) && (list_carre[i].innerText == "")){
-                            list_carre[i].innerText = player[0];
-                            list_index_out.push(list_copy.splice(i, 1));
-                            bascule = !bascule;
-                            result = win();
-                            if (result == true){
-                                reset_game();
-                            }
+                            print_play(i, player[0]);
                         }
                         else if ((!bascule) && (list_carre[i].innerText == "")) {
-                            list_carre[i].innerText = player[1];
-                            list_index_out.push(list_copy.splice(i, 1));
-                            bascule = !bascule;
-                            result = win();
-                            if (result == true) {
-                                reset_game();
-                            }
+                            print_play(i, player[1]);
                         } 
                         else {
                             if ((list_carre[i].innerText != "") && (case_vide() == true)){
@@ -162,34 +170,36 @@ function game_desk(){                         /* le cas ou on joue contre l'ordi
           if (player[0] != "" && player[1] != "" && player[1] != player[0]) {
             result = win();
             if (result == false) {
-                j = recup_index_vide(recup_copy_list());
-              if (list_carre[i].innerText == "") {
-                list_carre[i].innerText = player[0];
-                list_index_out.push(list_copy.splice(list_copy.indexOf(element), 1));
-                bascule = !bascule;
-                result = win();
-                if (result == true) {
-                  reset_game();
-                }
-              } else if (!bascule && list_carre[i].innerText == "") {
-                list_carre[i].innerText = player[1];
-                list_index_out.push(list_copy.splice(i, 1));
-                bascule = !bascule;
-                result = win();
-                if (result == true) {
-                  reset_game();
-                }
-              } else {
+              if (list_carre[i].innerText == ""){
+                  list_carre[i].innerText = player[0];
+                  list_index_out.push(list_copy.splice(i, 1));
+                  console.log(list_copy);
+                  result = win();
+                  if (result == true) {
+                    reset_game();
+                  }
+                  
+                  else if (list_copy.length > 0) {
+                    j = recup_index_vide(list_copy)[0];
+                    list_carre[j].innerText = player[1];
+                    list_index_out.push(list_copy.splice(0, 1));
+                    console.log(list_copy);
+                    result = win();
+                    if (result == true) {
+                      reset_game();
+                    }
+                  }
+              } 
+              else {
                 if (list_carre[i].innerText != "" && case_vide() == true) {
                   alert("Veuillez choisir une autre CASE !");
-                } else if (
-                  list_carre[i].innerText != "" &&
-                  case_vide() == false
-                ) {
+                } 
+                else if (list_carre[i].innerText != "" && case_vide() == false) {
                   reset();
                 }
               }
-            } else {
+            } 
+            else {
               reset_game();
             }
           } else {
