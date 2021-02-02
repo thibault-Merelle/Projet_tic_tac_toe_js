@@ -30,6 +30,8 @@ for( let item of carre_list) {
     };
         /* on ré affirme condition = false pour avoir une alternance O / X */
         
+        // https://stackoverflow.com/questions/40724697/javascript-do-something-before-alert
+        
         setTimeout(function() {
             win();
         },10)
