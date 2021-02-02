@@ -33,18 +33,24 @@ for( let item of carre_list) {
 
     /* permet de cibler un carre specfique où cliquera l'user */
  
-        if (!player_one){
-            if (user_click == ""){
-            user_click.innerText = "X"
-            player_one = true
-            }
-            /* !player_one = player_two --> c'est pour ça que la condition change*/
-            /* on renvoie un X  */
-        }
-        else if (player_one && user_click != ""){
-            
-            user_click.innerText = "O"
-            player_one = false
+    if (!player_one){
+        user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
+        player_one = true;
+        /* !player_one = player_two --> c'est pour ça que la condition change*/
+        /* on renvoie un X  */
+    }
+    else if (player_one){
+        user_click.innerText = "O" 
+        player_one = false/*'<i class="far fa-circle"></i>'*/
+        
+    };
+        /* on ré affirme condition = false pour avoir une alternance O / X */
+        
+        // https://stackoverflow.com/questions/40724697/javascript-do-something-before-alert
+        
+        setTimeout(function() {
+            win();
+        },10)
 
             //console.log('This is my length when player click o', carre_list)
 
@@ -53,12 +59,7 @@ for( let item of carre_list) {
             /* on ré affirme condition = false pour avoir une alternance O / X */
             
             // https://stackoverflow.com/questions/40724697/javascript-do-something-before-alert
-    
-            setTimeout(function() {
-                win();
-            },10)
 
-        });
 
 };
 
