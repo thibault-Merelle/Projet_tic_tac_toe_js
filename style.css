@@ -58,7 +58,7 @@ p{
 }
 
 
-.carre {
+.carre{
 
 width: 200px;
 height: 200px;
@@ -67,6 +67,17 @@ border: 1px solid #488286;
 margin: .5em auto;
 border-radius: .8em;
 box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
+
+}
+.carreplayer{
+  width: 300px;
+  height: 200px;
+  background-color: #70b9be;
+  margin: .5em auto;
+  text-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
+  color:#69a9ad;
+  font-size: 8rem;
+  margin: auto;
 
 }
 

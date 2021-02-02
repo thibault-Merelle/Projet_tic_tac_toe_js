@@ -14,10 +14,22 @@ let X = '<i class="fas fa-times"></i>'
 let O = '<i class="far fa-circle"></i>'
 let cell = (n) => carre_list[n].querySelector('span').innerText; //recupere text
 
+let countp1 = 0;
+let countp2 = 0;
 let carre_list = document.querySelectorAll('.carre'); //selectorAll renvoie liste
-player_one = false; //permet de differencier player_one et player_two. L'un reste faux, l'autre est vrai
-stop_play = false;
+let player_one = false; //permet de differencier player_one et player_two. L'un reste faux, l'autre est vrai
+let stop_play = false;
 console.log('return list of all carre element', carre_list);
+
+function fswitch(){
+    if(!player_one){
+        document.getElementById("carrep1").innerText = 'X';
+        document.getElementById("carrep2").innerText = '';
+    }
+    if(player_one){
+        document.getElementById("carrep1").innerText = '';
+        document.getElementById("carrep2").innerText = 'O';
+    }}
 
 
 
@@ -28,14 +40,16 @@ for( let item of carre_list) {
     /* permet de cibler un carre specfique où cliquera l'user */
  
     if (!player_one){
-        user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
+        user_click.innerText = 'X'; /*<i class="fas fa-times"></i> (a ajouter) */;
         player_one = true;
+        fswitch();
         /* !player_one = player_two --> c'est pour ça que la condition change*/
         /* on renvoie un X  */
     }
     else if (player_one){
-        user_click.innerText = "O" 
+        user_click.innerText = "O";
         player_one = false/*'<i class="far fa-circle"></i>'*/
+        fswitch();
         
     };
         /* on ré affirme condition = false pour avoir une alternance O / X */
@@ -43,6 +57,7 @@ for( let item of carre_list) {
         // https://stackoverflow.com/questions/40724697/javascript-do-something-before-alert
         
         setTimeout(function() {
+            fswitch();
             win();
         },10)
 
@@ -56,12 +71,15 @@ document.querySelector("#reset").addEventListener("click", function() {
     });
     
 function reset(){
-    node = document.querySelectorAll(".carre")
+    let node = document.querySelectorAll(".carre")
     for (let item in node){
         if (node[item].hasChildNodes){
             node[item].lastChild.innerText = '';
         }
     }
+    console.log("avant: " +player_one)
+    //player_one = !player_one;
+    console.log("apres: " +player_one)
 }
 /*appelle l'index de la liste des carre, 
 selectionne n pour basculer de "X" à "O", 
@@ -72,66 +90,81 @@ function win() {
 
     players.forEach((e) => {
 
-        if (cell(0) == e && cell(1) == e && cell(2) == e){
-            alert(e + " You're the winner ! :) ");
+        function display_player(){
+            let quote = " : "
+        if (e == "X"){
+            alert("Player one :" + " You're the winner ! :) ");
+            countp1 +=1;
+            document.getElementById("score").innerText = countp1+ quote + countp2
+            console.log(countp1);
             reset();
-            return "false";
         }
+        else if (e = "O"){
+            alert("Player two :" + " You're the winner ! :) ");
+            countp2 +=1;
+            document.getElementById("score").innerText = countp1 + quote + countp2
+            console.log(countp2);
+            reset();
+        }}
 
-        else if (cell(3) == e && cell(4)  == e && cell(5) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-            return "false";
-        }
-
-        else if (cell(6) == e && cell(7)  == e && cell(8) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-            return "false";
-        }
-
-        else if (cell(0) == e && cell(3)  == e && cell(6) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-            return "false";
-        }
-
-        else if (cell(1) == e && cell(4)  == e && cell(7) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-            return "false";
-        }
-
-        else if (cell(2) == e && cell(5)  == e && cell(8) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-            return "false";
-        }
-        else if (cell(0) == e && cell(4)== e && cell(8) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-            return "false";
-        }
-        else if (cell(2) == e && cell(4)== e && cell(6) == e){
-            alert(e + " You're the winner ! :) ");
-            reset();
-            return "false";
-        }
-        else{
-            return "true";
-        }
-        // else{
-        // for (let i = 0 ; cell[i] == e; i++){
-        //     alert('eguality');
-        //     reset();
-        //     }
-        // }
         
+            if (cell(0) == e && cell(1) == e && cell(2) == e){
+            display_player()
+            }
+    
+            else if (cell(3) == e && cell(4)  == e && cell(5) == e){
+            display_player()
+            }
 
-        // Si toutes les cellules contienne la meme valeur, alors le joueur à gagner
-        // Modifier la valeur alert, pour renvoyer un texte sous le jeu
-        // Si X, dire que player one à gagner
-        // Si O, dire que player two à gagner
+            else if (cell(6) == e && cell(7)  == e && cell(8) == e){
+            display_player()
+            }
+
+
+            else if (cell(0) == e && cell(3)  == e && cell(6) == e){
+            display_player()
+            }
+
+            else if (cell(1) == e && cell(4)  == e && cell(7) == e){
+                display_player()
+            }
+
+
+            else if (cell(2) == e && cell(5)  == e && cell(8) == e){
+                display_player()
+            }
+
+
+      
+            else if (cell(0) == e && cell(4)== e && cell(8) == e){
+                display_player()
+            }
+
+
+
+            else if (cell(0) == e && cell(4)== e && cell(8) == e){
+                display_player()
+
+            }
+
+
+            else if (cell(2) == e && cell(4)== e && cell(6) == e){
+                display_player()
+            }
+            else{
+                let i=0;
+                for(let item of carre_list){
+                    console.log(item, item.innerText)
+                    if(item.innerText != ''){
+                        i++;
+                    }
+                if (i==9){
+                    alert("Egality:) ");
+                    reset();
+                }
+                }
+            }
+             
     });
 };
 
