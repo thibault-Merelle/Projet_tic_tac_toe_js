@@ -37,13 +37,15 @@ for( let item of carre_list) {
         if (user_click.innerText == ""){
         user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
         player_one = true;
+        fswitch()
         /* !player_one = player_two --> c'est pour ça que la condition change*/
         /* on renvoie un X  */}
     }
     else if (player_one){
         if (user_click.innerText == ""){
         user_click.innerText = "O" 
-        player_one = false/*'<i class="far fa-circle"></i>'*/
+        player_one = false
+        fswitch()
         }
     };
         /* on ré affirme condition = false pour avoir une alternance O / X */
