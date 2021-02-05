@@ -1,18 +1,8 @@
-/*
-push.addEventListener("click", function() {
-    let newL = document.createElement("div");
-    newL.innerHTML = '<i class="fas fa-times"></i>';
-    push.appendChild(newL);
-})*/
 
 
-// Ajout Marwa
+let cell = (n) => carre_list[n].innerText; //recupere text
 
-//Selectionner tout les carre pour faire une liste
 
-let X = '<i class="fas fa-times"></i>'
-let O = '<i class="far fa-circle"></i>'
-let cell = (n) => carre_list[n].querySelector('span').innerText; //recupere text
 
 let countp1 = 0;
 let countp2 = 0;
@@ -35,35 +25,44 @@ function fswitch(){
 
 for( let item of carre_list) {
     /* cette for loop permet de parcourir une liste */
-    item.addEventListener("click", (e) => {
-    let user_click = item.querySelector('span');
+
+    item.addEventListener("click", (event) => {
+
+       let user_click = event.target
+       user_click.classList.add("clicking")
+
     /* permet de cibler un carre specfique où cliquera l'user */
  
-    if (!player_one){
-        user_click.innerText = 'X'; /*<i class="fas fa-times"></i> (a ajouter) */;
+    if (!player_one ){
+        if (user_click.innerText == ""){
+        user_click.innerText = 'X' /*<i class="fas fa-times"></i> (a ajouter) */;
         player_one = true;
-        fswitch();
+        fswitch()
         /* !player_one = player_two --> c'est pour ça que la condition change*/
-        /* on renvoie un X  */
+        /* on renvoie un X  */}
     }
     else if (player_one){
-        user_click.innerText = "O";
-        player_one = false/*'<i class="far fa-circle"></i>'*/
-        fswitch();
-        
+        if (user_click.innerText == ""){
+        user_click.innerText = "O" 
+        player_one = false
+        fswitch()
+        }
     };
         /* on ré affirme condition = false pour avoir une alternance O / X */
         
         // https://stackoverflow.com/questions/40724697/javascript-do-something-before-alert
         
         setTimeout(function() {
-            fswitch();
             win();
         },10)
 
-    });
+            //console.log('This is my length when player click o', carre_list)
+          
+            /* on ré affirme condition = false pour avoir une alternance O / X */
+            // https://stackoverflow.com/questions/40724697/javascript-do-something-before-alert
 
-};
+
+});
 
 
 document.querySelector("#reset").addEventListener("click", function() {
@@ -71,16 +70,17 @@ document.querySelector("#reset").addEventListener("click", function() {
     });
     
 function reset(){
-    let node = document.querySelectorAll(".carre")
-    for (let item in node){
-        if (node[item].hasChildNodes){
-            node[item].lastChild.innerText = '';
+    carre_full = document.querySelectorAll(".carre")
+    for (let item in carre_full){
+        if (carre_full[item] != ""){
+            carre_full[item].innerText = '';
         }
     }
     console.log("avant: " +player_one)
     //player_one = !player_one;
     console.log("apres: " +player_one)
 }
+
 /*appelle l'index de la liste des carre, 
 selectionne n pour basculer de "X" à "O", 
 inner text pour renvoyer la valeur*/
@@ -109,20 +109,20 @@ function win() {
 
         
             if (cell(0) == e && cell(1) == e && cell(2) == e){
-            display_player()
-            }
-    
+                display_player()
+                }
+        
             else if (cell(3) == e && cell(4)  == e && cell(5) == e){
-            display_player()
-            }
+                display_player()
+                }
 
             else if (cell(6) == e && cell(7)  == e && cell(8) == e){
-            display_player()
-            }
+                display_player()
+                }
 
 
             else if (cell(0) == e && cell(3)  == e && cell(6) == e){
-            display_player()
+                display_player()
             }
 
             else if (cell(1) == e && cell(4)  == e && cell(7) == e){
@@ -134,13 +134,10 @@ function win() {
                 display_player()
             }
 
-
       
             else if (cell(0) == e && cell(4)== e && cell(8) == e){
                 display_player()
             }
-
-
 
             else if (cell(0) == e && cell(4)== e && cell(8) == e){
                 display_player()
@@ -150,22 +147,22 @@ function win() {
 
             else if (cell(2) == e && cell(4)== e && cell(6) == e){
                 display_player()
-            }
-            else{
-                let i=0;
-                for(let item of carre_list){
-                    console.log(item, item.innerText)
-                    if(item.innerText != ''){
-                        i++;
+            } 
+
+            else  {
+
+                let i = 0
+                for (let item of carre_list){
+                    if(item.innerText != "") {
+                        i++
                     }
-                if (i==9){
-                    alert("Egality:) ");
-                    reset();
+                    if(i==9){
+                        alert("Equality")
+                        reset()
+                    }
                 }
-                }
-            }
-             
-    });
+            } 
+    }); 
 };
 
 
@@ -184,4 +181,4 @@ Etape 8: si c'est le cas, fin du jeu, le joeur à gagner
 
 */
 
-
+}

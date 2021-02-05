@@ -1,12 +1,16 @@
 *{
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
-background-color: #70b9be;
-text-align: center;
+
+  background-color: #70b9be;
+  text-align: center;
+
 }
 
 #div_title{
@@ -19,19 +23,24 @@ text-align: center;
 }
 
 p{
+
   margin: 1em;
+
 }
 
 .player{
+
   color: #fff;
   display: flex;
   justify-content: space-evenly;
   margin: 0.2em 0;
   font-family: 'Raleway', sans-serif;
   font-size: 2rem;
+
 }
 
 .btn {
+
   color: #69a9ad;
   font-size: 1.5rem;
   font-weight: bold;
@@ -40,12 +49,14 @@ p{
   border: 1px #488286;
   border-radius: .8em;
   box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
+
 }
 
 .btn:hover, .carre:hover {
 
   opacity: .8;
   box-shadow: -2px -2px 5px #488286, 2px 2px 5px #BABECC;
+
 }
 
 .container{
@@ -54,25 +65,25 @@ p{
   grid-template-columns: repeat(3, auto);
   margin:0 auto;
   max-width: 700px;
-  
 }
 
 
 .carre{
-
-width: 200px;
-height: 200px;
-background-color: #69a9ad;
-border: 1px solid #488286;
-margin: .5em auto;
-border-radius: .8em;
-box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
+  
+  width: 200px;
+  height: 200px;
+  background-color: #69a9ad;
+  border: 1px solid #488286;
+  margin: .5em auto;
+  box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
 
 }
+
 .carreplayer{
-  width: 300px;
+  width: 200px;
   height: 200px;
   background-color: #70b9be;
+  border-radius: .2em;
   margin: .5em auto;
   text-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
   color:#69a9ad;
@@ -81,9 +92,11 @@ box-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
 
 }
 
-span{
+.clicking{
+
   color: #fff;
   font-size: 10rem;
   margin: auto;
   text-shadow: 1px 1px 0 #fff;
+
 }
