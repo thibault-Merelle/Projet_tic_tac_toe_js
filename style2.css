@@ -50,7 +50,7 @@ p{
 
 .container{
 
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, auto);
   margin:0 auto;
   max-width: 700px;
@@ -58,7 +58,7 @@ p{
 }
 
 
-.carre {
+.carre_1, .carre_2 {
 
 width: 200px;
 height: 200px;
@@ -71,3 +71,14 @@ color: #fff;
 font-size: 10rem;
 }
 
+.carreplayer{
+  width: 300px;
+  height: 200px;
+  background-color: #70b9be;
+  margin: .5em auto;
+  text-shadow: -5px -5px 20px #488286,  5px 5px 20px #BABECC;
+  color:#69a9ad;
+  font-size: 8rem;
+  margin: auto;
+
+}
